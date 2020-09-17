@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import LogTextArea from './LogTextArea';
 
 
 import logo from './logo.svg';
@@ -21,15 +15,38 @@ class App extends Component {
 
     this.handleClickHello = this.handleClickHello.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
+    this.mesage = "React + nodejs app"
 
     this.state = {
       response: '',
+      message: 'React-bootstrap + nodejs express',
       post: '',
+      ip_address: '',
+      version: '',
       show: false
     };
   }
 
+  callAPI() {
+    fetch("http://localhost:8080/message")
+        .then(res => res.text())
+        .then(res => {
+          if (res!==""){
+            this.setState({ message: res })
+          }
+        }
+        );
+    fetch("http://localhost:8080/ipaddress")
+        .then(res => res.text())
+        .then(res => this.setState({ ip_address: res }));
+    fetch("http://localhost:8080/version")
+        .then(res => res.text())
+        .then(res => this.setState({ version: res }));
+  }
+
+  componentWillMount() {
+    this.callAPI();
+  }
   handleClickHello = async e => {
       this.setState({ show: true });
   }
@@ -39,7 +56,6 @@ class App extends Component {
 
 
   render() {
-
     return (
 
       <div className="App">
@@ -49,19 +65,18 @@ class App extends Component {
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossOrigin="anonymous"
       />
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="#home">CloudControl Solutions</Navbar.Brand>
-        <Nav className="mr-auto">
-        </Nav>
-
       </Navbar>
         <header className="App-header">
 
           <img src={logo} className="App-logo" alt="logo" />
-          <p className="shadowtext">
-            Sample React - NodeJS app
-          </p>
-          <div className="App-horizontalgap" >text</div>
+          <h2>
+            {this.state.message}
+          </h2>
+          <h6 className="card-subtitle mb-2 text-muted">ip address: {this.state.ip_address}</h6>
+          <h6 className="card-subtitle mb-2 text-muted">node: {this.state.version}</h6>
+          <div className="App-horizontalgap" ></div>
           <Container>
 
             <div >
@@ -81,18 +96,12 @@ class App extends Component {
             </div>
           </Container>
         </header>
-      <footer>
-        <div >
-              <Navbar bg="dark" variant="dark"  expand="lg" className="fixed-bottom text-center small copyright">
-                  <Container>
-                        <div>
-                        Powered by Node on AppZ
-                        </div>
-                  </Container>
-               </Navbar>
-         </div>
+        <Navbar bg="dark" variant="dark" fixed="bottom">
+        <Navbar.Text>
+          Powered by Node on AppZ
+        </Navbar.Text>
 
-    </footer>
+        </Navbar>
       </div>
 
 
