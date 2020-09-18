@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   callAPI() {
-    fetch("http://localhost:8080/message")
+    fetch(process.env.PUBLIC_URL+"/message")
         .then(res => res.text())
         .then(res => {
           if (res!==""){
@@ -36,10 +36,10 @@ class App extends Component {
           }
         }
         );
-    fetch("http://localhost:8080/ipaddress")
+    fetch(process.env.PUBLIC_URL+"/ipaddress")
         .then(res => res.text())
         .then(res => this.setState({ ip_address: res }));
-    fetch("http://localhost:8080/version")
+    fetch(process.env.PUBLIC_URL+"/version")
         .then(res => res.text())
         .then(res => this.setState({ version: res }));
   }
