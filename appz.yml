@@ -13,7 +13,7 @@ build:
 
 deploy:
     context: alpha/DEV
-    replicas: 2
+    replicas: 1
     port:
     - 8080
     
@@ -23,3 +23,4 @@ monitor:
 properties:
     page_title: "React-bootstrap + nodejs-express App"
     site_url: hellonode.appzclient.com
+    revision: 11
