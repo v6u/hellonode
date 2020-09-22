@@ -1,0 +1,26 @@
+app:
+    name: Hello Node
+    code: hellonode
+    notify: appzdev@cloudbourne.co
+
+build:
+    version: 0.1
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: node-10.22
+    image_name: alpha/nodejs-helloworld
+
+deploy:
+    context: alpha/DEV
+    replicas: 1
+    port:
+    - 8080
+    
+monitor:
+    notify: appzops@cloudbourne.co
+
+properties:
+    page_title: "React-bootstrap + nodejs-express App"
+    site_url: "https://hellonode.appzclient.com"
+    revision: 11
