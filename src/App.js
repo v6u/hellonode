@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import logo from './logo.svg';
 import './App.css';
 
+// ## blue - #053354   red - #360300  green - #002e0e   black - #262626
 
 class App extends Component {
   constructor(props, context) {
@@ -15,7 +16,7 @@ class App extends Component {
 
     this.handleClickHello = this.handleClickHello.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.mesage = "React + nodejs app"
+    this.mesage = ""
 
     this.state = {
       response: '',
@@ -23,7 +24,8 @@ class App extends Component {
       post: '',
       ip_address: '',
       version: '',
-      show: false
+      show: false,
+      backgroundcolor: '#002e0e'
     };
   }
 
@@ -33,6 +35,14 @@ class App extends Component {
         .then(res => {
           if (res!==""){
             this.setState({ message: res })
+          }
+        }
+        );
+    fetch(process.env.PUBLIC_URL+"/color")
+        .then(res => res.text())
+        .then(res => {
+          if (res!==""){
+            this.setState({ backgroundcolor: res })
           }
         }
         );
@@ -56,6 +66,7 @@ class App extends Component {
 
 
   render() {
+    const { backgroundcolor } = this.state
     return (
 
       <div className="App">
@@ -68,9 +79,9 @@ class App extends Component {
       <Navbar bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="#home">CloudControl Solutions</Navbar.Brand>
       </Navbar>
-        <header className="App-header">
+        <header className="App-header" style={{'background-color': backgroundcolor}}>
 
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo bounce-6" alt="logo" />
           <h2>
             {this.state.message}
           </h2>
@@ -80,7 +91,7 @@ class App extends Component {
           <Container>
 
             <div >
-              <Button className="btn_margin" variant="primary" size="lg" onClick={this.handleClickHello}  block>
+              <Button className="btn_margin" variant="primary" size="lg" onClick={this.handleClickHello}  >
                 say hello
               </Button>
               <Modal show={this.state.show} onHide={this.handleClose}>
