@@ -21,7 +21,7 @@ monitor:
     notify: appzops@cloudbourne.co
 
 properties:
-    page_title: "React-bootstrap + nodejs-express App"
-    site_url: "https://hellonodejs.appzclient.com/"
+    page_title: "React-bootstrap + nodejs-express App : Demo 10082020"
+    site_url: "https://hellonodejs.appzprod.com/"
     revision: 11
     page_color: Green
