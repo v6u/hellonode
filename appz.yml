@@ -22,6 +22,6 @@ monitor:
 
 properties:
     page_title: "React-bootstrap + nodejs-express App"
-    site_url: "https://hellonodejs.appzclient.com/"
+    site_url: "https://hellonodejs.12bfc575.nip.io/"
     revision: 11
     page_color: Green
