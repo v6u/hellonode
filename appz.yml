@@ -15,6 +15,7 @@ deploy:
     context: alpha/DEV
     replicas: 1
     port:
+    - 8080
     - 80
     
 monitor:
