@@ -22,6 +22,6 @@ monitor:
 
 properties:
     page_title: "React-bootstrap + nodejs-express App"
-    site_url: "https://hellonodejs.appzclient.com/"
+    #site_url: "https://hellonodejs.appzclient.com/"
     revision: 12
     page_color: Red
