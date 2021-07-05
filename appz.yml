@@ -8,8 +8,8 @@ build:
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: node-10.22
-    image_name: alpha/nodejs-helloworld
+    image_template: node-14.16
+
 
 deploy:
     context: alpha/DEV
@@ -17,12 +17,10 @@ deploy:
     port:
     - 8080
     - 80
-    
-monitor:
-    notify: appzops@cloudbourne.co
+
 
 properties:
     page_title: "React-bootstrap + nodejs-express App"
-    site_url: "https://hellonodejs.appzclient.com/"
+    ##site_url: "https://hellonodejs.appzclient.com/"
     revision: 13
     page_color: Blue
