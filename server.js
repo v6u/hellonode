@@ -5,7 +5,7 @@ const app = express()
 var ip = require("ip");
 
 var cors = require("cors");
-
+var prometheus = require('appmetrics-prometheus').attach();
 app.use(express.static(path.join(__dirname, 'build')))
 app.use(cors());
 app.get('/message', (req, res) => {
