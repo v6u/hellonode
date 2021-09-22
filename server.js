@@ -52,6 +52,7 @@ app.get('/metrics', async (req, res) => {
 });
 const port = process.env.PORT || 8080;
 console.log(
-	`Server listening to ${port}, metrics exposed on /metrics endpoint`,
+	 	`Server listening to ${port}, metrics exposed on /metrics endpoint`,
 );
+console.log(process.env.test);
 app.listen(8080)
