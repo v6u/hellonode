@@ -22,5 +22,5 @@ deploy:
 properties:
     page_title: "React-bootstrap + nodejs-express App"
     ##site_url: "https://hellonodejs.appzclient.com/"
-    revision: 25
+    revision: 26
     page_color: Blue
